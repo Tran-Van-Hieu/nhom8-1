@@ -75,6 +75,32 @@ ket_qua.pack()
 # Lấy tổng số sinh viên tham gia môn học
 in_data = array(df.iloc[:, 2])
 tong_sinh_vien["text"] = "Tổng số sinh viên tham gia môn học: " + str(np.sum(in_data))
+def ve_do_thi_pho_diem():
+    lop = lop_dropdown.get()  # Lấy lớp từ dropdown box
+    diem = diem_lop_dropdown.get()  # Lấy loại điểm từ dropdown box
+    filtered_df = df[df['Mã lớp'] == lop][diem]  # Lọc dữ liệu cho lớp và loại điểm cụ thể
+
+    if not filtered_df.empty:
+        # Vẽ đồ thị phổ điểm
+        plt.figure(figsize=(8, 6))
+        plt.hist(filtered_df, bins=10, edgecolor='k')
+        plt.title(f'Đồ thị phổ điểm {diem} của lớp {lop}')
+        plt.xlabel(diem)
+        plt.ylabel('Số lượng sinh viên')
+        plt.grid(True)
+        plt.show()
+    else:
+        ket_qua.config(text="Chưa có dữ liệu cho lựa chọn này")
+
+# Tạo nút Vẽ đồ thị phổ điểm
+ve_do_thi_button = tk.Button(root, text="Vẽ đồ thị phổ điểm", command=ve_do_thi_pho_diem)
+ve_do_thi_button.pack()
 
 # Bắt đầu vòng lặp chạy ứng dụng
 root.mainloop()
+# Tạo nút Thoát
+def thoat_ung_dung():
+    root.destroy()
+thoat_button = tk.Button(root, text="Thoát", command=thoat_ung_dung)
+thoat_button.pack()
+
