@@ -57,7 +57,7 @@ diem_dropdown.pack()
 # Dropdown box cho lựa chọn loại điểm của lớp
 diem_lop_options = ["Loại A+", "Loại A", "Loại B+", "Loại B", "Loại C+", "Loại C"]
 diem_lop_dropdown = ttk.Combobox(root, values=diem_lop_options)
-diem_lop_dropdown.set(diem_lop_options[0])  # Thiết lập giá trị mặc định
+diem_lop_dropdown.set(diem_lop_options[0])  # Tạo giá trị mặc định
 diem_lop_dropdown.pack()
 
 # Tạo nút Xem kết quả
